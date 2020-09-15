@@ -1,0 +1,44 @@
+15-Sep-2020 14:13:23 CEST  Initiating request to open file file:/eos/user/c/cmsdas/short-exercises/muon/dymm.root
+15-Sep-2020 14:13:25 CEST  Successfully opened file file:/eos/user/c/cmsdas/short-exercises/muon/dymm.root
+Begin processing the 1st record. Run 1, Event 16003, LumiSection 17 on stream 0 at 15-Sep-2020 14:13:43.658 CEST
+Number of RECO muons: 2
+Number of GEN muons: 2
+Number of RECO muons: 1
+Number of GEN muons: 0
+Number of RECO muons: 4
+Number of GEN muons: 2
+Number of RECO muons: 4
+Number of GEN muons: 2
+Number of RECO muons: 2
+Number of GEN muons: 2
+Number of RECO muons: 3
+Number of GEN muons: 1
+Number of RECO muons: 6
+Number of GEN muons: 2
+Number of RECO muons: 1
+Number of GEN muons: 1
+Number of RECO muons: 5
+Number of GEN muons: 1
+Number of RECO muons: 4
+Number of GEN muons: 2
+15-Sep-2020 14:13:46 CEST  Closed file file:/eos/user/c/cmsdas/short-exercises/muon/dymm.root
+
+=============================================
+
+MessageLogger Summary
+
+ type     category        sev    module        subroutine        count    total
+ ---- -------------------- -- ---------------- ----------------  -----    -----
+    1 fileAction           -s file_close                             1        1
+    2 fileAction           -s file_open                              2        2
+
+ type    category    Examples: run/evt        run/evt          run/evt
+ ---- -------------------- ---------------- ---------------- ----------------
+    1 fileAction           PostGlobalEndRun                  
+    2 fileAction           pre-events       pre-events       
+
+Severity    # Occurrences   Total Occurrences
+--------    -------------   -----------------
+System                  3                   3
+
+dropped waiting message count 0
