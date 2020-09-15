@@ -52,39 +52,42 @@
 
 class MuonExercise1 : public edm::one::EDAnalyzer<edm::one::SharedResources> {
 
-  public:
-
-    explicit MuonExercise1(const edm::ParameterSet&);
-    ~MuonExercise1();
-
-    static void fillDescriptions(edm::ConfigurationDescriptions& descriptions);
-
-  private:
-
-    virtual void beginJob() override;
-    virtual void analyze(const edm::Event&, const edm::EventSetup&) override;
-    virtual void endJob() override;
-
-    //virtual void beginRun(edm::Run const&, edm::EventSetup const&) override;
-    //virtual void endRun(edm::Run const&, edm::EventSetup const&) override;
-    //virtual void beginLuminosityBlock(edm::LuminosityBlock const&, edm::EventSetup const&) override;
-    //virtual void endLuminosityBlock(edm::LuminosityBlock const&, edm::EventSetup const&) override;
-
-    // ----------member data ---------------------------
-     
-    // TFileService
-    edm::Service<TFileService> fs;
+public:
   
-    edm::EDGetTokenT<pat::MuonCollection> muonCollToken;
-    //edm::EDGetTokenT<pat::PackedGenParticleCollection> genCollToken;
-    edm::EDGetTokenT<reco::GenParticleCollection> genCollToken;
-
-    // Histograms
-    TH1D* h_ngen;  // number of generated muons
-    TH1D* h_nrec;  // number of reconstructed muons
-    TH1D* h_genpt; // pt of generated muons 
-    TH1D* h_recpt; // pt of reconstructed muons
-      
+  explicit MuonExercise1(const edm::ParameterSet&);
+  ~MuonExercise1();
+  
+  static void fillDescriptions(edm::ConfigurationDescriptions& descriptions);
+  
+private:
+  
+  virtual void beginJob() override;
+  virtual void analyze(const edm::Event&, const edm::EventSetup&) override;
+  virtual void endJob() override;
+  
+  //virtual void beginRun(edm::Run const&, edm::EventSetup const&) override;
+  //virtual void endRun(edm::Run const&, edm::EventSetup const&) override;
+  //virtual void beginLuminosityBlock(edm::LuminosityBlock const&, edm::EventSetup const&) override;
+  //virtual void endLuminosityBlock(edm::LuminosityBlock const&, edm::EventSetup const&) override;
+  
+  // ----------member data ---------------------------
+  
+  // TFileService
+  edm::Service<TFileService> fs;
+  
+  edm::EDGetTokenT<pat::MuonCollection> muonCollToken;
+  //edm::EDGetTokenT<pat::PackedGenParticleCollection> genCollToken;
+  edm::EDGetTokenT<reco::GenParticleCollection> genCollToken;
+  
+  // Histograms
+  TH1D* h_ngen;  // number of generated muons
+  TH1D* h_nrec;  // number of reconstructed muons
+  TH1D* h_ntrk;  // number of tracker muons
+  TH1D* h_nlooseID; // number of loose ID muons
+  TH1D* h_genpt; // pt of generated muons 
+  TH1D* h_recpt; // pt of reconstructed muons
+  TH1D* h_trkpt; // pt of tracker muon
+  TH1D* h_looseIDpt; // pt of loose ID muons
 };
 
 //
@@ -104,8 +107,12 @@ MuonExercise1::MuonExercise1(const edm::ParameterSet& iConfig) {
 
   h_ngen  = fs->make<TH1D>("ngen", "Number of GEN muons", 10, 0.0, 10.0);
   h_nrec  = fs->make<TH1D>("nrec", "Number of RECO muons", 10, 0.0, 10.0);
+  h_ntrk  = fs->make<TH1D>("ntrk", "Number of Tracker muons", 20, 0.0, 20.0);
+  h_nlooseID = fs->make<TH1D>("nlooseID", "Number of LooseID muons", 20, 0.0, 20.0);
   h_recpt = fs->make<TH1D>("pt", "RECO pt", 100, 0.0, 200.0);
   h_genpt = fs->make<TH1D>("genpt", "GEN pt", 100, 0.0, 200.0);
+  h_trkpt = fs->make<TH1D>("trkpt", "Tracker pt", 100, 0.0, 200.0);
+  h_looseIDpt = fs->make<TH1D>("looseIDpt", "LooseID pt", 100, 0.0, 200.0);
 
 }
 
@@ -131,7 +138,7 @@ void MuonExercise1::analyze(const edm::Event& iEvent, const edm::EventSetup& iSe
   using namespace pat;
 
 
-  size_t ngen(0), nrec(0);
+  size_t ngen(0), nrec(0), ntrk(0), nLooseID(0);
 
   //
   // RECO Muons
@@ -140,12 +147,23 @@ void MuonExercise1::analyze(const edm::Event& iEvent, const edm::EventSetup& iSe
   iEvent.getByToken(muonCollToken, muonColl);
   nrec = muonColl->size();
   h_nrec->Fill(nrec);
-  cout << "Number of RECO muons: " << nrec << endl;
+  //  cout << "Number of RECO muons: " << nrec << endl;
 
   for (auto it = muonColl->cbegin(); it != muonColl->cend(); ++it) {
     // put your code here
     const pat::Muon& recMu = (*it);
     h_recpt->Fill(recMu.pt());
+    if(recMu.isTrackerMuon() && recMu.eta()<2.4 && recMu.pt()>8) {
+      h_trkpt->Fill( recMu.pt() );
+      ntrk = ntrk+1;
+    }
+    h_ntrk->Fill( ntrk );
+
+    if(recMu.isLooseMuon()) {
+      h_looseIDpt->Fill( recMu.pt() );
+      nLooseID++;
+    }
+    h_nlooseID->Fill( nLooseID );
   }
 
   //
@@ -155,14 +173,16 @@ void MuonExercise1::analyze(const edm::Event& iEvent, const edm::EventSetup& iSe
   edm::Handle <reco::GenParticleCollection> genColl;
   iEvent.getByToken(genCollToken, genColl);
   for (auto&& genPart : *(genColl.product())) {
-    if ( genPart.status() == 1 && std::abs(genPart.pdgId()) == 13 && fabs(genPart.eta()) < 2.4 && genPart.pt() > 1.5 ) ngen++;
+    //    if ( genPart.status() == 1 && std::abs(genPart.pdgId()) == 13 && fabs(genPart.eta()) < 2.4 && genPart.pt() > 1.5 ) ngen++;
+    if ( genPart.status() == 1 && std::abs(genPart.pdgId()) == 13) ngen++;
   }
   h_ngen->Fill(ngen);
-  cout << "Number of GEN muons: " << ngen << endl;
+  //  cout << "Number of GEN muons: " << ngen << endl;
 
   for (auto&& genPart : *(genColl.product())) {
-    if ( genPart.status() != 1 || std::abs(genPart.pdgId()) != 13 || fabs(genPart.eta()) > 2.4 || genPart.pt() < 1.5 ) continue;
+    //    if ( genPart.status() != 1 || std::abs(genPart.pdgId()) != 13 || fabs(genPart.eta()) > 2.4 || genPart.pt() < 1.5 ) continue;
     // put your code here
+    if ( genPart.status() == 1 && std::abs(genPart.pdgId()) == 13) ngen++;
     h_genpt->Fill(genPart.pt());
   }
 
