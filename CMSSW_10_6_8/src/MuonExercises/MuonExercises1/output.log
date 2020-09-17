@@ -1,41 +1,41 @@
-17-Sep-2020 15:56:38 CEST  Initiating request to open file file:/eos/user/c/cmsdas/short-exercises/muon/dymm.root
-17-Sep-2020 15:56:41 CEST  Successfully opened file file:/eos/user/c/cmsdas/short-exercises/muon/dymm.root
-Begin processing the 1st record. Run 1, Event 16003, LumiSection 17 on stream 0 at 17-Sep-2020 15:56:44.334 CEST
-Begin processing the 1001st record. Run 1, Event 17003, LumiSection 18 on stream 0 at 17-Sep-2020 15:56:57.632 CEST
-Begin processing the 2001st record. Run 1, Event 18003, LumiSection 19 on stream 0 at 17-Sep-2020 15:56:58.212 CEST
-Begin processing the 3001st record. Run 1, Event 19001, LumiSection 20 on stream 0 at 17-Sep-2020 15:56:58.785 CEST
-Begin processing the 4001st record. Run 1, Event 20002, LumiSection 21 on stream 0 at 17-Sep-2020 15:56:59.367 CEST
-Begin processing the 5001st record. Run 1, Event 21010, LumiSection 22 on stream 0 at 17-Sep-2020 15:56:59.957 CEST
-Begin processing the 6001st record. Run 1, Event 22004, LumiSection 23 on stream 0 at 17-Sep-2020 15:57:31.013 CEST
-Begin processing the 7001st record. Run 1, Event 23004, LumiSection 24 on stream 0 at 17-Sep-2020 15:57:31.604 CEST
-Begin processing the 8001st record. Run 1, Event 32006, LumiSection 33 on stream 0 at 17-Sep-2020 15:57:32.190 CEST
-Begin processing the 9001st record. Run 1, Event 33003, LumiSection 34 on stream 0 at 17-Sep-2020 15:57:32.779 CEST
-Begin processing the 10001st record. Run 1, Event 34008, LumiSection 35 on stream 0 at 17-Sep-2020 15:57:33.563 CEST
-Begin processing the 11001st record. Run 1, Event 35006, LumiSection 36 on stream 0 at 17-Sep-2020 15:57:35.522 CEST
-Begin processing the 12001st record. Run 1, Event 36007, LumiSection 37 on stream 0 at 17-Sep-2020 15:57:36.115 CEST
-Begin processing the 13001st record. Run 1, Event 24009, LumiSection 25 on stream 0 at 17-Sep-2020 15:57:36.714 CEST
-Begin processing the 14001st record. Run 1, Event 25002, LumiSection 26 on stream 0 at 17-Sep-2020 15:57:37.304 CEST
-Begin processing the 15001st record. Run 1, Event 26012, LumiSection 27 on stream 0 at 17-Sep-2020 15:57:37.984 CEST
-Begin processing the 16001st record. Run 1, Event 27002, LumiSection 28 on stream 0 at 17-Sep-2020 15:57:38.563 CEST
-Begin processing the 17001st record. Run 1, Event 28007, LumiSection 29 on stream 0 at 17-Sep-2020 15:57:41.691 CEST
-Begin processing the 18001st record. Run 1, Event 31005, LumiSection 32 on stream 0 at 17-Sep-2020 15:57:42.274 CEST
-Begin processing the 19001st record. Run 1, Event 192004, LumiSection 193 on stream 0 at 17-Sep-2020 15:57:43.057 CEST
-Begin processing the 20001st record. Run 1, Event 193006, LumiSection 194 on stream 0 at 17-Sep-2020 15:57:43.648 CEST
-Begin processing the 21001st record. Run 1, Event 194002, LumiSection 195 on stream 0 at 17-Sep-2020 15:57:44.222 CEST
-Begin processing the 22001st record. Run 1, Event 195002, LumiSection 196 on stream 0 at 17-Sep-2020 15:58:30.517 CEST
-Begin processing the 23001st record. Run 1, Event 196005, LumiSection 197 on stream 0 at 17-Sep-2020 15:58:31.105 CEST
-Begin processing the 24001st record. Run 1, Event 29009, LumiSection 30 on stream 0 at 17-Sep-2020 15:58:31.698 CEST
-Begin processing the 25001st record. Run 1, Event 30008, LumiSection 31 on stream 0 at 17-Sep-2020 15:58:32.614 CEST
-Begin processing the 26001st record. Run 1, Event 37010, LumiSection 38 on stream 0 at 17-Sep-2020 15:58:33.204 CEST
-Begin processing the 27001st record. Run 1, Event 38003, LumiSection 39 on stream 0 at 17-Sep-2020 15:58:42.310 CEST
-Begin processing the 28001st record. Run 1, Event 39002, LumiSection 40 on stream 0 at 17-Sep-2020 15:58:42.899 CEST
-Begin processing the 29001st record. Run 1, Event 60005, LumiSection 61 on stream 0 at 17-Sep-2020 15:58:43.518 CEST
-Begin processing the 30001st record. Run 1, Event 61004, LumiSection 62 on stream 0 at 17-Sep-2020 15:58:44.263 CEST
-Begin processing the 31001st record. Run 1, Event 62001, LumiSection 63 on stream 0 at 17-Sep-2020 15:58:44.925 CEST
-Begin processing the 32001st record. Run 1, Event 197005, LumiSection 198 on stream 0 at 17-Sep-2020 15:58:45.797 CEST
-Begin processing the 33001st record. Run 1, Event 198006, LumiSection 199 on stream 0 at 17-Sep-2020 15:58:46.402 CEST
-Begin processing the 34001st record. Run 1, Event 199007, LumiSection 200 on stream 0 at 17-Sep-2020 15:58:47.218 CEST
-17-Sep-2020 15:58:47 CEST  Closed file file:/eos/user/c/cmsdas/short-exercises/muon/dymm.root
+17-Sep-2020 16:20:13 CEST  Initiating request to open file file:/eos/user/c/cmsdas/short-exercises/muon/dymm.root
+17-Sep-2020 16:20:16 CEST  Successfully opened file file:/eos/user/c/cmsdas/short-exercises/muon/dymm.root
+Begin processing the 1st record. Run 1, Event 16003, LumiSection 17 on stream 0 at 17-Sep-2020 16:20:17.796 CEST
+Begin processing the 1001st record. Run 1, Event 17003, LumiSection 18 on stream 0 at 17-Sep-2020 16:20:26.424 CEST
+Begin processing the 2001st record. Run 1, Event 18003, LumiSection 19 on stream 0 at 17-Sep-2020 16:20:27.003 CEST
+Begin processing the 3001st record. Run 1, Event 19001, LumiSection 20 on stream 0 at 17-Sep-2020 16:20:27.576 CEST
+Begin processing the 4001st record. Run 1, Event 20002, LumiSection 21 on stream 0 at 17-Sep-2020 16:20:28.155 CEST
+Begin processing the 5001st record. Run 1, Event 21010, LumiSection 22 on stream 0 at 17-Sep-2020 16:20:28.738 CEST
+Begin processing the 6001st record. Run 1, Event 22004, LumiSection 23 on stream 0 at 17-Sep-2020 16:20:34.586 CEST
+Begin processing the 7001st record. Run 1, Event 23004, LumiSection 24 on stream 0 at 17-Sep-2020 16:20:35.171 CEST
+Begin processing the 8001st record. Run 1, Event 32006, LumiSection 33 on stream 0 at 17-Sep-2020 16:20:35.752 CEST
+Begin processing the 9001st record. Run 1, Event 33003, LumiSection 34 on stream 0 at 17-Sep-2020 16:20:36.335 CEST
+Begin processing the 10001st record. Run 1, Event 34008, LumiSection 35 on stream 0 at 17-Sep-2020 16:20:37.115 CEST
+Begin processing the 11001st record. Run 1, Event 35006, LumiSection 36 on stream 0 at 17-Sep-2020 16:20:38.600 CEST
+Begin processing the 12001st record. Run 1, Event 36007, LumiSection 37 on stream 0 at 17-Sep-2020 16:20:39.201 CEST
+Begin processing the 13001st record. Run 1, Event 24009, LumiSection 25 on stream 0 at 17-Sep-2020 16:20:39.797 CEST
+Begin processing the 14001st record. Run 1, Event 25002, LumiSection 26 on stream 0 at 17-Sep-2020 16:20:40.390 CEST
+Begin processing the 15001st record. Run 1, Event 26012, LumiSection 27 on stream 0 at 17-Sep-2020 16:20:41.082 CEST
+Begin processing the 16001st record. Run 1, Event 27002, LumiSection 28 on stream 0 at 17-Sep-2020 16:20:41.658 CEST
+Begin processing the 17001st record. Run 1, Event 28007, LumiSection 29 on stream 0 at 17-Sep-2020 16:20:43.140 CEST
+Begin processing the 18001st record. Run 1, Event 31005, LumiSection 32 on stream 0 at 17-Sep-2020 16:20:43.719 CEST
+Begin processing the 19001st record. Run 1, Event 192004, LumiSection 193 on stream 0 at 17-Sep-2020 16:20:44.507 CEST
+Begin processing the 20001st record. Run 1, Event 193006, LumiSection 194 on stream 0 at 17-Sep-2020 16:20:45.104 CEST
+Begin processing the 21001st record. Run 1, Event 194002, LumiSection 195 on stream 0 at 17-Sep-2020 16:20:45.683 CEST
+Begin processing the 22001st record. Run 1, Event 195002, LumiSection 196 on stream 0 at 17-Sep-2020 16:20:50.170 CEST
+Begin processing the 23001st record. Run 1, Event 196005, LumiSection 197 on stream 0 at 17-Sep-2020 16:20:50.767 CEST
+Begin processing the 24001st record. Run 1, Event 29009, LumiSection 30 on stream 0 at 17-Sep-2020 16:20:51.350 CEST
+Begin processing the 25001st record. Run 1, Event 30008, LumiSection 31 on stream 0 at 17-Sep-2020 16:20:52.252 CEST
+Begin processing the 26001st record. Run 1, Event 37010, LumiSection 38 on stream 0 at 17-Sep-2020 16:20:52.835 CEST
+Begin processing the 27001st record. Run 1, Event 38003, LumiSection 39 on stream 0 at 17-Sep-2020 16:20:53.693 CEST
+Begin processing the 28001st record. Run 1, Event 39002, LumiSection 40 on stream 0 at 17-Sep-2020 16:20:54.277 CEST
+Begin processing the 29001st record. Run 1, Event 60005, LumiSection 61 on stream 0 at 17-Sep-2020 16:20:54.881 CEST
+Begin processing the 30001st record. Run 1, Event 61004, LumiSection 62 on stream 0 at 17-Sep-2020 16:20:55.567 CEST
+Begin processing the 31001st record. Run 1, Event 62001, LumiSection 63 on stream 0 at 17-Sep-2020 16:20:56.148 CEST
+Begin processing the 32001st record. Run 1, Event 197005, LumiSection 198 on stream 0 at 17-Sep-2020 16:20:57.122 CEST
+Begin processing the 33001st record. Run 1, Event 198006, LumiSection 199 on stream 0 at 17-Sep-2020 16:20:57.705 CEST
+Begin processing the 34001st record. Run 1, Event 199007, LumiSection 200 on stream 0 at 17-Sep-2020 16:20:58.488 CEST
+17-Sep-2020 16:20:58 CEST  Closed file file:/eos/user/c/cmsdas/short-exercises/muon/dymm.root
 
 =============================================
 

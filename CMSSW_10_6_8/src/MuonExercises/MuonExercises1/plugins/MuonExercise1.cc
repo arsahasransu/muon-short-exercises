@@ -187,7 +187,8 @@ void MuonExercise1::analyze(const edm::Event& iEvent, const edm::EventSetup& iSe
   for (auto&& genPart : *(genColl.product())) {
     //    if ( genPart.status() != 1 || std::abs(genPart.pdgId()) != 13 || fabs(genPart.eta()) > 2.4 || genPart.pt() < 1.5 ) continue;
     // put your code here
-    if ( genPart.status() == 1 && std::abs(genPart.pdgId()) == 13) ngen++;
+    if ( genPart.status() != 1 || std::abs(genPart.pdgId()) != 13 ) continue;
+    ngen++;
     h_genpt->Fill(genPart.pt());
   }
 
