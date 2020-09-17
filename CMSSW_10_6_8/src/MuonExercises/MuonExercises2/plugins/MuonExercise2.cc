@@ -147,8 +147,44 @@ void MuonExercise2::analyze(const edm::Event& iEvent, const edm::EventSetup& iSe
   /////////////////////////////////////////////////
     
   //put your code here
+  pat::Muon mup, mun;
+  for (auto&& muP : *(muons.product())) {
+    if( !(muP.isGlobalMuon()) || muP.pt()<20 || muP.eta()>2.4 || muP.pdgId()<0) continue;    
+    for (auto&& muN : *(muons.product())) {
+      if( !(muN.isGlobalMuon()) || muN.pt()<20 || muN.eta()>2.4 || muN.pdgId()>0) continue;    
+      double invM = (muP.p4()+muN.p4()).M();
+      if(invM<70.0 || invM>110.0) continue;
+      h_RecDiMuonM->Fill(invM);
+      mup = muP;
+      mun = muN;
+    }
+  }
   
+  int idx(-1), bestidxP(-1), bestidxN(-1);
+  double bestdrP(9999.0), bestdrN(9999.0);
+  for (auto&& gen: *(genColl.product())) {
+    if(gen.status()!=1 || std::abs(gen.pdgId())!=13) continue;
+    double drP(9999.0), drN(9999.0);
+    if(gen.pdgId()>0) {
+      drP = deltaR(mup, gen);
+    }
+    if(gen.pdgId()<0) {
+      drN = deltaR(mun, gen);
+    }
+    if(drP<0.1 && drP<bestdrP) {
+      bestdrP = drP;
+      bestidxP = idx;
+    }
+    if(drN<0.1 && drN<bestdrN) {
+      bestdrN = drN;
+      bestidxN = idx;
+    }
+  }
 
+  if(bestidxP!=-1 && bestidxN != -1) {
+    double genInvM = (genColl->at(bestidxP).p4()+genColl->at(bestidxN).p4()).M();
+    h_GenDiMuonM->Fill(genInvM);
+  }
 }
 
 

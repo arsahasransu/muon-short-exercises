@@ -88,6 +88,8 @@ private:
   TH1D* h_recpt; // pt of reconstructed muons
   TH1D* h_trkpt; // pt of tracker muon
   TH1D* h_looseIDpt; // pt of loose ID muons
+  TH1D* h_genFoundpt; // pt of reco muons where gen is found
+  TH1D* h_genNotFoundpt; // pt of reco muons where gen is not found
 };
 
 //
@@ -113,6 +115,8 @@ MuonExercise1::MuonExercise1(const edm::ParameterSet& iConfig) {
   h_genpt = fs->make<TH1D>("genpt", "GEN pt", 100, 0.0, 200.0);
   h_trkpt = fs->make<TH1D>("trkpt", "Tracker pt", 100, 0.0, 200.0);
   h_looseIDpt = fs->make<TH1D>("looseIDpt", "LooseID pt", 100, 0.0, 200.0);
+  h_genFoundpt = fs->make<TH1D>("genFoundpt", "Reco Gen Found pt", 100, 0.0, 200.0);
+  h_genNotFoundpt = fs->make<TH1D>("genNotFoundpt", "Reco Gen NotFound pt", 100, 0.0, 200.0);
 
 }
 
@@ -153,7 +157,7 @@ void MuonExercise1::analyze(const edm::Event& iEvent, const edm::EventSetup& iSe
     const pat::Muon& recMu = (*it);
 
     if(recMu.isGlobalMuon()) {
-      h_recpt->Fill(recMu.pt());
+      h_recpt->Fill( recMu.pt() );
       nglob++;
     }
 
@@ -162,7 +166,7 @@ void MuonExercise1::analyze(const edm::Event& iEvent, const edm::EventSetup& iSe
       ntrk++;;
     }
 
-    if(recMu.isLooseMuon()) {
+    if(recMu.isLooseMuon() && recMu.eta()<2.4 && recMu.pt()>8) {
       h_looseIDpt->Fill( recMu.pt() );
       nLooseID++;
     }
@@ -192,6 +196,31 @@ void MuonExercise1::analyze(const edm::Event& iEvent, const edm::EventSetup& iSe
     h_genpt->Fill(genPart.pt());
   }
 
+  // Match the reco and gen muon counterparts
+  for (auto&& muon : *(muonColl.product())) {
+    int idx(-1), bestidx(-1);
+    float bestdr(9999.);
+    for (auto&& genPart : *(genColl.product())) {
+      idx++; 
+      // Only final-state muons 
+      if (std::abs(genPart.pdgId()) != 13 || genPart.status() != 1) continue; 
+      float dr = deltaR(muon, genPart);
+      if (dr < 0.1 && dr < bestdr) {
+	bestidx = idx;
+	bestdr = dr;
+      }      
+    }
+
+    if(bestidx != -1) { // Gen Match Found
+      h_genFoundpt->Fill(muon.pt());
+    }
+    else {
+      h_genNotFoundpt->Fill(muon.pt());
+    }
+
+    
+  }
+  
 }
 
 

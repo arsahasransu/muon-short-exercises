@@ -1,2 +1,4 @@
 pluginMuonExercise1.so MuonExercise1 CMS%EDM%Framework%Module
 pluginMuonExercise1.so MuonExercise1 CMS%EDM%Framework%ParameterSet%Description
+pluginMuonExercise2.so MuonExercise2 CMS%EDM%Framework%Module
+pluginMuonExercise2.so MuonExercise2 CMS%EDM%Framework%ParameterSet%Description
