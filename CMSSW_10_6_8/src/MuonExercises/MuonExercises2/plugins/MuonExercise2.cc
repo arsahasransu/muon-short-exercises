@@ -163,6 +163,7 @@ void MuonExercise2::analyze(const edm::Event& iEvent, const edm::EventSetup& iSe
   int idx(-1), bestidxP(-1), bestidxN(-1);
   double bestdrP(9999.0), bestdrN(9999.0);
   for (auto&& gen: *(genColl.product())) {
+    idx++;
     if(gen.status()!=1 || std::abs(gen.pdgId())!=13) continue;
     double drP(9999.0), drN(9999.0);
     if(gen.pdgId()>0) {
@@ -174,14 +175,17 @@ void MuonExercise2::analyze(const edm::Event& iEvent, const edm::EventSetup& iSe
     if(drP<0.1 && drP<bestdrP) {
       bestdrP = drP;
       bestidxP = idx;
+      std::cout<<"Positive Particle Found."<<bestidxP<<std::endl;
     }
     if(drN<0.1 && drN<bestdrN) {
       bestdrN = drN;
       bestidxN = idx;
+      std::cout<<"Negative Particle Found."<<bestidxN<<std::endl;
     }
   }
 
   if(bestidxP!=-1 && bestidxN != -1) {
+    std::cout<<"Storing Invariant Mass"<<std::endl;
     double genInvM = (genColl->at(bestidxP).p4()+genColl->at(bestidxN).p4()).M();
     h_GenDiMuonM->Fill(genInvM);
   }
