@@ -109,7 +109,7 @@ MuonExercise1::MuonExercise1(const edm::ParameterSet& iConfig) {
   h_nrec  = fs->make<TH1D>("nrec", "Number of RECO muons", 10, 0.0, 10.0);
   h_ntrk  = fs->make<TH1D>("ntrk", "Number of Tracker muons", 20, 0.0, 20.0);
   h_nlooseID = fs->make<TH1D>("nlooseID", "Number of LooseID muons", 20, 0.0, 20.0);
-  h_recpt = fs->make<TH1D>("pt", "RECO pt", 100, 0.0, 200.0);
+  h_recpt = fs->make<TH1D>("recpt", "RECO pt", 100, 0.0, 200.0);
   h_genpt = fs->make<TH1D>("genpt", "GEN pt", 100, 0.0, 200.0);
   h_trkpt = fs->make<TH1D>("trkpt", "Tracker pt", 100, 0.0, 200.0);
   h_looseIDpt = fs->make<TH1D>("looseIDpt", "LooseID pt", 100, 0.0, 200.0);
@@ -138,7 +138,7 @@ void MuonExercise1::analyze(const edm::Event& iEvent, const edm::EventSetup& iSe
   using namespace pat;
 
 
-  size_t ngen(0), nrec(0), ntrk(0), nLooseID(0);
+  size_t ngen(0), nrec(0), ntrk(0), nLooseID(0), nglob(0);
 
   //
   // RECO Muons
@@ -146,25 +146,30 @@ void MuonExercise1::analyze(const edm::Event& iEvent, const edm::EventSetup& iSe
   edm::Handle<vector<pat::Muon>> muonColl;
   iEvent.getByToken(muonCollToken, muonColl);
   nrec = muonColl->size();
-  h_nrec->Fill(nrec);
   //  cout << "Number of RECO muons: " << nrec << endl;
 
   for (auto it = muonColl->cbegin(); it != muonColl->cend(); ++it) {
     // put your code here
     const pat::Muon& recMu = (*it);
-    h_recpt->Fill(recMu.pt());
+
+    if(recMu.isGlobalMuon()) {
+      h_recpt->Fill(recMu.pt());
+      nglob++;
+    }
+
     if(recMu.isTrackerMuon() && recMu.eta()<2.4 && recMu.pt()>8) {
       h_trkpt->Fill( recMu.pt() );
-      ntrk = ntrk+1;
+      ntrk++;;
     }
-    h_ntrk->Fill( ntrk );
 
     if(recMu.isLooseMuon()) {
       h_looseIDpt->Fill( recMu.pt() );
       nLooseID++;
     }
-    h_nlooseID->Fill( nLooseID );
   }
+  h_nrec->Fill( nrec );
+  h_ntrk->Fill( ntrk );
+  h_nlooseID->Fill( nLooseID );
 
   //
   // GEN Muons

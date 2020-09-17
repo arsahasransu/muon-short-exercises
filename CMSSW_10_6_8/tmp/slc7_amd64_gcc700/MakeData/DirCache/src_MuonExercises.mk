@@ -1,2 +1,2 @@
 ALL_SUBSYSTEMS+=MuonExercises
-subdirs_src_MuonExercises = src_MuonExercises_MuonExercises1
+subdirs_src_MuonExercises = src_MuonExercises_MuonExercises1 src_MuonExercises_MuonExercises2
